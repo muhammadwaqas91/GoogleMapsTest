@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B08F5ED3C1A6C689CA19A71 /* Pods_GoogleMapsTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3789C31499118D574B28693 /* Pods_GoogleMapsTest.framework */; };
+		CF67203221A4802500807562 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF67203121A4802500807562 /* GoogleService-Info.plist */; };
 		CF8493812194137100AD7E1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8493802194137100AD7E1A /* AppDelegate.swift */; };
 		CF8493832194137100AD7E1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8493822194137100AD7E1A /* ViewController.swift */; };
 		CF8493862194137100AD7E1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8493842194137100AD7E1A /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		8EB210ADD14F722C99B85A50 /* Pods-GoogleMapsTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapsTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapsTest/Pods-GoogleMapsTest.release.xcconfig"; sourceTree = "<group>"; };
 		9E5AF9CF37DBC30901984AC8 /* Pods-GoogleMapsTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapsTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapsTest/Pods-GoogleMapsTest.debug.xcconfig"; sourceTree = "<group>"; };
 		C3789C31499118D574B28693 /* Pods_GoogleMapsTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapsTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF67203121A4802500807562 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF84937D2194137100AD7E1A /* GoogleMapsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleMapsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8493802194137100AD7E1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF8493822194137100AD7E1A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				CF8493842194137100AD7E1A /* Main.storyboard */,
 				CF8493872194137400AD7E1A /* Assets.xcassets */,
 				CF8493892194137400AD7E1A /* LaunchScreen.storyboard */,
+				CF67203121A4802500807562 /* GoogleService-Info.plist */,
 				CF84938C2194137400AD7E1A /* Info.plist */,
 			);
 			path = GoogleMapsTest;
@@ -109,6 +112,7 @@
 				CF84937A2194137100AD7E1A /* Frameworks */,
 				CF84937B2194137100AD7E1A /* Resources */,
 				20684D174E51F40756BD9553 /* [CP] Copy Pods Resources */,
+				B1FBDAE22518AB6ABDBC395C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF84938B2194137400AD7E1A /* LaunchScreen.storyboard in Resources */,
+				CF67203221A4802500807562 /* GoogleService-Info.plist in Resources */,
 				CF8493882194137400AD7E1A /* Assets.xcassets in Resources */,
 				CF8493862194137100AD7E1A /* Main.storyboard in Resources */,
 			);
@@ -175,15 +180,39 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GoogleMapsTest/Pods-GoogleMapsTest-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoogleMapsTest/Pods-GoogleMapsTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1FBDAE22518AB6ABDBC395C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GoogleMapsTest/Pods-GoogleMapsTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoogleMapsTest/Pods-GoogleMapsTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B5041CC11CAEA296E5BF0E54 /* [CP] Check Pods Manifest.lock */ = {
@@ -371,7 +400,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.finja.GoogleMapsTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finja.SimSim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -393,7 +422,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.finja.GoogleMapsTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finja.SimSim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
