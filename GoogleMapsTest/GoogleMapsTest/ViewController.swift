@@ -31,8 +31,20 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance()?.uiDelegate = self
         
         let signInButton = GIDSignInButton()
-        signInButton.center = CGPoint(x: view.center.x, y: 120)
         mapView.addSubview(signInButton)
+        
+        
+        let string12H = "2018-11-30 07:35:22 PM"
+        let string24H = "2018-11-30 19:35:22"
+        
+        let date12H = getDateFrom(string12H, withFormat: "yyyy-MM-dd hh:mm:ss a", timeZone: "IST")
+        let date24H = getDateFrom(string24H, withFormat: "yyyy-MM-dd HH:mm:ss", timeZone: "IST")
+        
+        let string1_12 = getStringFrom(date12H!, withFormat: "yyyy-MM-dd hh:mm:ss a")
+        let string1_24 = getStringFrom(date12H!, withFormat: "yyyy-MM-dd HH:mm:ss")
+        
+        let string2_12 = getStringFrom(date24H!, withFormat: "yyyy-MM-dd hh:mm:ss a")
+        let string2_24 = getStringFrom(date24H!, withFormat: "yyyy-MM-dd HH:mm:ss")
     }
     
     
@@ -80,5 +92,24 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 dismissViewController viewController: UIViewController!) {
         print("dismissViewController")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func getDateFrom(_ dateString: String, withFormat formatString: String, timeZone: String = "UTC") -> Date? {
+        var dateToReturn: Date?
+        let formatter = DateFormatter()
+        formatter.timeZone = NSTimeZone(abbreviation: timeZone) as TimeZone?
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = formatString
+        dateToReturn = formatter.date(from: dateString)
+        return dateToReturn
+    }
+    
+    func getStringFrom(_ date: Date, withFormat formatString: String) -> String? {
+        var stringToReturn: String?
+        let formatter = DateFormatter()
+        formatter.dateFormat = formatString
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        stringToReturn = formatter.string(from: date)
+        return stringToReturn
     }
 }
