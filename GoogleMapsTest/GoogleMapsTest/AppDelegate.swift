@@ -12,7 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -60,19 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             print("\(error.localizedDescription)")
         } else {
             // Perform any operations on signed in user here.
-            
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            
-            print(user)
-            print(signIn)
-            
-            print(signIn.hasAuthInKeychain())
-            
             if let gpSignin = GIDSignIn.sharedInstance() {
                 if gpSignin.scopes != nil {
                     let scopes = NSMutableArray(array: gpSignin.scopes)
@@ -81,7 +67,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                         gpSignin.scopes = convertedScopes
                     }
                 }
+                
+                if gpSignin.hasAuthInKeychain() {
+                    print("Signed In")
+                    // GIDSignIn.sharedInstance().signInSilently()
+                    gpSignin.signIn()
+                    // logInToBackendServerWithAuthIdToken()
+                } else {
+                    print("Not Signed In")
+                    gpSignin.signOut()
+                    gpSignin.signIn()
+                    //  region.show(googleLoginView())
+                }
             }
+            
+            
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
         }
     }
     
